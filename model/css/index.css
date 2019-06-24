@@ -21,9 +21,13 @@ body {
 .box li {
 	list-style-type: none;
 	text-align: center;
-    padding: 5px 0px;
+    	padding: 5px 0px;
 }
 
 .box ul {
     padding: 5px 0px;
+}
+
+input {
+    	margin: 0px 5px;
 }
