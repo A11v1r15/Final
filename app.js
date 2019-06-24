@@ -6,10 +6,10 @@ const port = 8080;
 
 const server = http.createServer((req, res) => {
 	let fs = require('fs');
-	let contents = fs.readFileSync('/model/index.html', 'utf8');
+	let contents = fs.readFileSync('model/index.html', 'utf8');
 
 	let modules = [];
-	modules.style = fs.readFileSync('/model/css/index.css', 'utf-8');
+	modules.style = fs.readFileSync('model/css/index.css', 'utf-8');
 	modules.numeros = "";
 
 	let variables = [];
