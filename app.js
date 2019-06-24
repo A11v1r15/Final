@@ -40,33 +40,35 @@ const server = http.createServer((req, res) => {
 	if (req.method === 'POST') {
 		let body = '';
 		req.on('data', function(chunk) {
-		  body += chunk;
+			body += chunk;
 		});
 		req.on('end', function() {
-		  let data = qs.parse(body);
-		console.log(data)
-		
-		modules.numeros = fs.readFileSync('model/numeros.html', 'utf-8');
+			let data = qs.parse(body);
+			console.log(data)
 
-		let map = JSON.parse(fs.readFileSync("map.json", 'utf8'));
-		variables.n1 = data.n1;
-		variables.n2 = data.n2;
-		variables.n3 = data.n3;
-		variables.N = map[variables.n1] * map[variables.n2] * map[variables.n3];
-		
-		let sorted = JSON.parse(fs.readFileSync("sorted.json", 'utf8'));
-		sorted.push(variables.N);
-		sorted = sorted.sort(function(a, b){return b - a});
-		fs.writeFile("sorted.json", JSON.stringify(sorted), 'utf8', () => {
-			console.log("updated sorted")
-		});
-		variables.highest = sorted[0];
-		
-		finishView(res, contents, modules, variables);
+			modules.numeros = fs.readFileSync('model/numeros.html', 'utf-8');
+
+			let map = JSON.parse(fs.readFileSync("map.json", 'utf8'));
+			variables.n1 = data.n1;
+			variables.n2 = data.n2;
+			variables.n3 = data.n3;
+			variables.N = map[variables.n1] * map[variables.n2] * map[variables.n3];
+
+			let sorted = JSON.parse(fs.readFileSync("sorted.json", 'utf8'));
+			sorted.push(variables.N);
+			sorted = sorted.sort(function(a, b) {
+				return b - a
+			});
+			fs.writeFile("sorted.json", JSON.stringify(sorted), 'utf8', () => {
+				console.log("updated sorted")
+			});
+			variables.highest = sorted[0];
+
+			finishView(res, contents, modules, variables);
 		});
 	} else {
 		finishView(res, contents, modules, variables);
-	}	
+	}
 });
 
 server.listen(port, hostname, () => {
@@ -93,7 +95,7 @@ function hasJsonStructure(str) {
 	}
 }
 
-function finishView(res, contents, modules, variables){
+function finishView(res, contents, modules, variables) {
 	Object.keys(modules).forEach((e) => {
 		contents = contents.replace("&{" + e + "}", modules[e]);
 	})
