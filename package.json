@@ -6,7 +6,7 @@
     "node": "10.3.0"
 }, 
 "scripts": {
- "start': "node app.js",
+ "start": "node app.js"
  },
   "author": "Álvaro Carvalho",
   "license": "MIT"
