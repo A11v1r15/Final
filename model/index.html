@@ -1,7 +1,7 @@
 <html>
    <head>
       <meta charset="UTF-8">
-      <style>${style}</style>
+      <style>&{style}</style>
       <title>Prova Final Programação Script</title>
    </head>
    <body>
@@ -9,9 +9,10 @@
          <form class="box" action="/" method="post">
             <ul>
                <li>Insira os números</li>
-               <li><input type="number" name="n1"><input type="number" name="n2"><input type="number" name="n3"></li>
+               <li><input type="number" name="n1" min="0" max="99"><input type="number" name="n2" min="0" max="99"><input type="number" name="n3" min="0" max="99"></li>
                <li><input type="submit" value="Enviar"></li>
             </ul>
+			&{numeros}
          </form>
       </div>
    </body>
