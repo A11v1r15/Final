@@ -1,8 +1,11 @@
 {
-  "name": "myapp",
+  "name": "Final Countdown",
   "description": "a really cool app",
   "version": "1.0.0",
   "engines": {
     "node": "10.3.0"
-  }
+}, 
+  "main": "app.js",
+  "author": "Álvaro Carvalho",
+  "license": "MIT"
 }
