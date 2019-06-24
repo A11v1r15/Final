@@ -19,30 +19,22 @@ const server = http.createServer((req, res) => {
 	variables.N = "";
 	variables.highest = "";
 
-	try {
-//		if (!(fs.existsSync("sorted.json") && hasJsonStructure(fs.readFileSync("sorted.json", 'utf8')))) {
-			let x = [];
-			fs.writeFile("sorted.json", JSON.stringify(x), 'utf8', () => {
-				console.log("created sorted")
-			});
-//		}
-	} catch (err) {
-		console.log(err);
+	if (!(fs.existsSync("sorted.json") && hasJsonStructure(fs.readFileSync("sorted.json", 'utf8')))) {
+		let x = [];
+		fs.writeFile("sorted.json", JSON.stringify(x), 'utf8', () => {
+			console.log("created sorted")
+		});
 	}
-	
-	try {
-		if (!(fs.existsSync("map.json") && hasJsonStructure(fs.readFileSync("map.json", 'utf8'))) || JSON.parse(fs.readFileSync("sorted.json", 'utf8')).length > 1000) {
-			let x = [];
-			for (let n = 0; n < 100; n++) {
-				x[n] = n;
-			}
-			shuffleArray(x);
-			fs.writeFile("map.json", JSON.stringify(x), 'utf8', () => {
-				console.log("created map")
-			});
+
+	if (!(fs.existsSync("map.json") && hasJsonStructure(fs.readFileSync("map.json", 'utf8'))) || JSON.parse(fs.readFileSync("sorted.json", 'utf8')).length > 1000) {
+		let x = [];
+		for (let n = 0; n < 100; n++) {
+			x[n] = n;
 		}
-	} catch (err) {
-		console.log(err);
+		shuffleArray(x);
+		fs.writeFile("map.json", JSON.stringify(x), 'utf8', () => {
+			console.log("created map")
+		});
 	}
 
 	if (req.method === 'POST') {
